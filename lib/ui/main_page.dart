@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_project/ui/pages/HomePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,6 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
-  String userName = "Sem";
   int index = 0;
   TabController tabController;
 
@@ -30,8 +30,8 @@ class _MainPageState extends State<MainPage>
         physics: NeverScrollableScrollPhysics(),
         children: [
           Center(
-              // child: HomePage(),
-              ),
+            child: HomePage(),
+          ),
           Center(
             child: Text('Calendar Page'),
           ),
