@@ -1,13 +1,21 @@
+import 'package:doctor_appointment_project/data/doctors_data.dart';
 import 'package:doctor_appointment_project/models/Doctor.dart';
+import 'package:doctor_appointment_project/ui/widges/AppointmentWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/BoxWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/DoctorInfoWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 class DoctorDetails extends StatelessWidget {
   Doctor doctor;
   DoctorDetails(this.doctor);
-
+  var dateString = DateFormat.E().format(DateTime.now());
+  // List<String> days = doctor.availability.values;
+  // List<String> availabileTime = doctor.availability.map((key, value) {
+  //   return doctor.availability['key'] == dateString;
+  // }).toList();
+  // List<String> day = doctor.availability.dateString;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +111,7 @@ class DoctorDetails extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
@@ -116,12 +125,16 @@ class DoctorDetails extends StatelessWidget {
                       'Availability',
                       style: TextStyle(
                         fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                   Container(
+                    margin: EdgeInsets.only(
+                      left: 20,
+                    ),
                     child: Text(
-                      '10 AM to 08 PM',
+                      '${doctor.availability[dateString][0]} to ${doctor.availability[dateString][doctor.availability[dateString].length - 1]}',
                       style: TextStyle(
                         fontSize: 10.0,
                         color: Colors.black.withOpacity(0.8),
@@ -130,7 +143,55 @@ class DoctorDetails extends StatelessWidget {
                   ),
                 ],
               ),
+              Container(
+                margin: EdgeInsets.only(
+                  right: 20,
+                  top: 20,
+                ),
+                child: RaisedButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Icon(
+                        Icons.calendar_today,
+                        size: 12,
+                        color: Color(0xFF87b5a3),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Check',
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Color(0xFF87b5a3),
+                        ),
+                      ),
+                    ],
+                  ),
+                  color: Color(0xFFf5f6f6),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    side: BorderSide(
+                      color: Color(0xFF87b5a3),
+                    ),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
             ],
+          ),
+          Expanded(
+            flex: 1,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: doctor.availability[dateString].length,
+              itemBuilder: (context, index) {
+                return AppointmentWidget(
+                  '${doctor.availability[dateString][index]}',
+                );
+              },
+            ),
           ),
         ],
       ),
