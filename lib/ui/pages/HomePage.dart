@@ -1,8 +1,10 @@
 import 'package:doctor_appointment_project/data/category_data.dart';
 import 'package:doctor_appointment_project/data/doctors_data.dart';
 import 'package:doctor_appointment_project/models/User.dart';
+import 'package:doctor_appointment_project/ui/widges/ButtonWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/CategoriesWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/DoctorWidget.dart';
+import 'package:doctor_appointment_project/ui/widges/SectionTitleWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:searchfield/searchfield.dart';
@@ -132,62 +134,16 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                margin: EdgeInsets.only(
-                  left: 10,
-                  right: 25,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xFF629f63),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: IconButton(
-                  color: Color(0xFFFFFFFF),
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.settings,
-                  ),
-                ),
-              ),
+            ButtonWidget(
+              left: 10,
+              right: 25,
+              fontColor: Colors.white,
+              bacgroundColor: Color(0xFF629f63),
+              icon: Icons.settings,
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              margin: EdgeInsets.only(
-                top: 25,
-                bottom: 5,
-                left: 20,
-              ),
-              child: Text(
-                'Categories',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                right: 25,
-                top: 25,
-              ),
-              child: Text(
-                'See All',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF629f63),
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ],
-        ),
+        SectionTitle('Categories'),
         Expanded(
           flex: 1,
           child: ListView.builder(
@@ -198,40 +154,7 @@ class HomePage extends StatelessWidget {
             },
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              margin: EdgeInsets.only(
-                top: 25,
-                bottom: 15,
-                left: 20,
-              ),
-              child: Text(
-                'Nearest Specilist',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                right: 25,
-                top: 25,
-              ),
-              child: Text(
-                'See All',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF629f63),
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ],
-        ),
+        SectionTitle('Nearest Specilist'),
         Expanded(
           flex: 2,
           child: ListView.builder(

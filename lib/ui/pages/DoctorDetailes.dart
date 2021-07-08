@@ -2,6 +2,7 @@ import 'package:doctor_appointment_project/data/doctors_data.dart';
 import 'package:doctor_appointment_project/models/Doctor.dart';
 import 'package:doctor_appointment_project/ui/widges/AppointmentWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/BoxWidget.dart';
+import 'package:doctor_appointment_project/ui/widges/ButtonWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/DoctorInfoWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,11 +12,7 @@ class DoctorDetails extends StatelessWidget {
   Doctor doctor;
   DoctorDetails(this.doctor);
   var dateString = DateFormat.E().format(DateTime.now());
-  // List<String> days = doctor.availability.values;
-  // List<String> availabileTime = doctor.availability.map((key, value) {
-  //   return doctor.availability['key'] == dateString;
-  // }).toList();
-  // List<String> day = doctor.availability.dateString;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

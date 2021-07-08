@@ -1,5 +1,6 @@
 import 'package:doctor_appointment_project/models/Doctor.dart';
 import 'package:doctor_appointment_project/ui/pages/DoctorDetailes.dart';
+import 'package:doctor_appointment_project/ui/widges/ButtonWidget.dart';
 import 'package:doctor_appointment_project/ui/widges/DoctorInfoWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class DoctorWidget extends StatelessWidget {
       // padding: EdgeInsets.all(15),
       child: Card(
         margin: EdgeInsets.only(
-          bottom: 60,
+          bottom: 55,
         ),
         elevation: 5,
         shape: RoundedRectangleBorder(
@@ -37,6 +38,7 @@ class DoctorWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Image(
+                    width: 50,
                     image: AssetImage(
                       doctor.doctorPicture,
                     ),
@@ -49,30 +51,17 @@ class DoctorWidget extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    height: 35,
-                    margin: EdgeInsets.only(
-                      left: 15,
-                      // right: 15,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFe7efe8),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: IconButton(
-                      color: Color(0xFF08623a),
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.email_outlined,
-                      ),
-                    ),
-                  ),
+                ButtonWidget(
+                  left: 15,
+                  right: 1,
+                  fontColor: Color(0xFF08623a),
+                  bacgroundColor: Color(0xFFe7efe8),
+                  icon: Icons.email_outlined,
                 ),
                 Expanded(
                   flex: 8,
                   child: Container(
+                    height: 40,
                     margin: EdgeInsets.only(
                       left: 15,
                       right: 15,
