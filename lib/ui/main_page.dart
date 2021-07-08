@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage>
         controller: tabController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          Center(
+          Container(
             child: HomePage(),
           ),
           Center(
@@ -44,6 +44,7 @@ class _MainPageState extends State<MainPage>
         ],
       ),
       bottomSheet: Container(
+        // margin: EdgeInsets.only(top: 50),
         alignment: Alignment.bottomCenter,
         decoration: BoxDecoration(
           // color: Colors.white,

@@ -81,7 +81,7 @@ List<Doctor> doctors = [
       }),
   Doctor(
       doctorName: 'doctor3',
-      doctorPicture: 'assets/images/doctors/brain.jfif',
+      doctorPicture: 'assets/images/doctors/doctor5.jfif',
       doctorSpecilzation: 'dentist',
       site: 'Palestine, hebron',
       email: 'doctor1@gmail.com',
@@ -116,7 +116,7 @@ List<Doctor> doctors = [
       }),
   Doctor(
     doctorName: 'doctor4',
-    doctorPicture: 'assets/images/doctors/brain.jfif',
+    doctorPicture: 'assets/images/doctors/doctor4.jfif',
     doctorSpecilzation: 'dentist',
     site: 'Palestine, hebron',
     email: 'doctor1@gmail.com',
