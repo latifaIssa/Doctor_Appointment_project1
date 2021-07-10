@@ -8,6 +8,7 @@ import 'package:doctor_appointment_project/ui/widges/SectionTitleWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:searchfield/searchfield.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   User user;
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.topRight,
               margin: EdgeInsets.only(
                 right: 20,
-                top: 50,
+                top: 50.h,
               ),
               child: Icon(
                 Icons.notifications_none_sharp,
@@ -35,128 +36,154 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              margin: EdgeInsets.only(
-                bottom: 15,
-                left: 20,
-              ),
-              child: Text(
-                'Hi $userName,',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0x000000).withOpacity(0.7),
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            Container(
-              width: 250,
-              margin: EdgeInsets.only(
-                // top: 50,
-                left: 20,
-              ),
-              child: Text(
-                'How do you feel today?',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 30,
-                ),
-              ),
-            )
-          ],
-        ),
-        SizedBox(
-          height: 55,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 1,
-              child: SizedBox(
-                width: 5,
-              ),
-            ),
-            Container(
-              child: Expanded(
-                flex: 6,
-                child: SearchField(
-                  suggestions: doctorsNames,
-                  hint: 'Serach doctor',
-                  searchStyle: TextStyle(
-                    fontSize: 15,
-                    color: Color(0xFFcdd8d0),
+        Expanded(
+          flex: 3,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  margin: EdgeInsets.only(
+                    // bottom: 5.h,
+                    left: 20,
                   ),
-                  marginColor: Color(0xFFe8f3eb),
-                  validator: (x) {
-                    if (!doctorsNames.contains(x) || x.isEmpty) {
-                      return 'Please Enter a valid doctor name';
-                    }
-                    return null;
-                  },
-                  hasOverlay: false,
-                  searchInputDecoration: InputDecoration(
-                    filled: true,
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Color(0xFFcdd8d0),
+                  child: Text(
+                    'Hi $userName,',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0x000000).withOpacity(0.7),
+                      fontSize: 16,
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFFe8f3eb),
-                        width: 0,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
-                        color: Color(0xFFe8f3eb),
-                        width: 0,
-                      ),
-                    ),
-                    labelStyle: TextStyle(
-                      backgroundColor: Color(0xFFe8f3eb),
-                    ),
-                    contentPadding: EdgeInsets.all(10),
                   ),
-                  maxSuggestionsInViewPort: 6,
-                  itemHeight: 40,
-                  onTap: (x) {
-                    print(x);
-                  },
                 ),
               ),
-            ),
-            ButtonWidget(
-              left: 10,
-              right: 25,
-              fontColor: Colors.white,
-              bacgroundColor: Color(0xFF629f63),
-              icon: Icons.settings,
-            ),
-          ],
+              Expanded(
+                flex: 3,
+                child: Container(
+                  width: 800.w,
+                  margin: EdgeInsets.only(
+                    left: 20,
+                  ),
+                  child: Text(
+                    'How do you feel today?',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: SizedBox(
+            height: 2.h,
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  width: 5,
+                ),
+              ),
+              Container(
+                // alignment: Alignment.topRight,
+                // clipBehavior: ,
+                child: Expanded(
+                  flex: 6,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.0),
+                      topRight: Radius.circular(15.0),
+                      bottomLeft: Radius.circular(15.0),
+                      bottomRight: Radius.circular(15.0),
+                    ),
+                    child: SearchField(
+                      suggestions: doctorsNames,
+                      hint: 'Serach doctor',
+                      searchStyle: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFFcdd8d0),
+                      ),
+                      marginColor: Color(0xFFe8f3eb),
+                      validator: (x) {
+                        if (!doctorsNames.contains(x) || x.isEmpty) {
+                          return 'Please Enter a valid doctor name';
+                        }
+                        return null;
+                      },
+                      hasOverlay: true,
+                      searchInputDecoration: InputDecoration(
+                        isCollapsed: true,
+
+                        // isDense: false,
+                        enabledBorder: InputBorder.none,
+                        filled: true,
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Color(0xFFcdd8d0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Color(0xFFe8f3eb),
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: Color(0xFFe8f3eb),
+                            width: 0,
+                          ),
+                        ),
+                        labelStyle: TextStyle(
+                          backgroundColor: Color(0xFFe8f3eb),
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                      ),
+                      maxSuggestionsInViewPort: 6,
+                      itemHeight: 40,
+                      onTap: (x) {
+                        print(x);
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              ButtonWidget(
+                left: 10.w,
+                right: 25.w,
+                fontColor: Colors.white,
+                bacgroundColor: Color(0xFF629f63),
+                icon: Icons.settings,
+              ),
+            ],
+          ),
         ),
         SectionTitle('Categories'),
         Expanded(
-          flex: 1,
+          flex: 4,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
             itemBuilder: (context, index) {
-              return CategoryWidget(categories[index]);
+              return Expanded(child: CategoryWidget(categories[index]));
             },
           ),
         ),
         SectionTitle('Nearest Specilist'),
         Expanded(
-          flex: 2,
+          flex: 5,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,

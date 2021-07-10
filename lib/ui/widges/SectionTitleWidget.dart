@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SectionTitle extends StatelessWidget {
   String title;
@@ -9,32 +10,37 @@ class SectionTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          margin: EdgeInsets.only(
-            top: 25,
-            bottom: 15,
-            left: 20,
-          ),
-          child: Text(
-            '$title',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              fontSize: 20,
+        Expanded(
+          flex: 4,
+          child: Container(
+            margin: EdgeInsets.only(
+              top: 25.h,
+              bottom: 10.h,
+              left: 50.w,
+            ),
+            child: Text(
+              '$title',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 20,
+              ),
             ),
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(
-            right: 25,
-            top: 25,
-          ),
-          child: Text(
-            'See All',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF629f63),
-              fontSize: 13,
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(
+              right: 50.w,
+              top: 25.h,
+            ),
+            child: Text(
+              'See All',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF629f63),
+                fontSize: 13,
+              ),
             ),
           ),
         ),
